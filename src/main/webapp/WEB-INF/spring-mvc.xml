@@ -8,7 +8,8 @@
 
 
     <mvc:view-resolvers>
-        <bean id="dotViewResolver" class="org.springframework.web.servlet.view.script.ScriptTemplateViewResolver">
+        <bean id="dotViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+            <property name="viewClass" value="de.deyovi.spring.web.scriptbug.PatchedScriptTemplateView" />
             <property name="prefix" value="/WEB-INF/resources/templates/" />
             <property name="viewNames" value="*.dot" />
         </bean>
@@ -18,7 +19,6 @@
     <context:component-scan base-package="de.deyovi.spring.web" />
 
     <mvc:annotation-driven />
-
 
     <bean id="dotScriptViewTemplate" class="org.springframework.web.servlet.view.script.ScriptTemplateConfigurer">
         <property name="engineName" value="JavaScript" />
